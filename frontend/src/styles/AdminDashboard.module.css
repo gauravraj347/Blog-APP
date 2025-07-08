@@ -1,0 +1,61 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+.heading {
+  margin-bottom: 1.5rem;
+}
+.createBtn {
+  display: inline-block;
+  margin-bottom: 1rem;
+  background: #0070f3;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.createBtn:hover {
+  background: #0059c1;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.tableTh, .tableTd {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+.tableTh {
+  background: #f9f9f9;
+  font-weight: 700;
+}
+.editBtn {
+  margin-right: 0.7rem;
+  background: #f5f5f5;
+  color: #333;
+  border: none;
+  padding: 0.3rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.editBtn:hover {
+  background: #e2e2e2;
+}
+.deleteBtn {
+  background: #ff3b47;
+  color: #fff;
+  border: none;
+  padding: 0.3rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 0.3rem;
+}
+.deleteBtn:hover {
+  background: #d9001b;
+}
