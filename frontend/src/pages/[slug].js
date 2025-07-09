@@ -4,9 +4,11 @@ import Head from "next/head";
 
 export async function getServerSideProps({ params }) {
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL || ""}/api/posts/${params.slug}`);
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "https://blog-app-xwiv.onrender.com";
+    const res = await axios.get(`${API_BASE}/api/posts/${params.slug}`);
     return { props: { post: res.data.post } };
-  } catch {
+  } catch (error) {
+    console.error('Error fetching post:', error);
     return { notFound: true };
   }
 }
@@ -22,7 +24,7 @@ export default function PostPage({ post }) {
         <meta property="og:description" content={post.title} />
         <meta property="og:type" content="article" />
       </Head>
-      <div style={{ maxWidth: 700, margin: "2rem auto" }}>
+      <div style={{ maxWidth: 700, margin: "2rem auto", padding: "0 1rem" }}>
         <h1>{post.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
         <p style={{ color: "#888", marginTop: "2rem" }}>

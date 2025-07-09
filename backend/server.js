@@ -8,10 +8,19 @@ const app = express();
 app.use(bodyParser.json());
 
 const cors = require('cors');
-app.use(cors());
 
+// Configure CORS to allow your frontend domain
+app.use(cors({
+  origin: [
+    'https://blog-app-ten-mu-10.vercel.app',
+    'http://localhost:3000', // For local development
+    'http://localhost:3001'   // For local development
+  ],
+  credentials: true
+}));
 
 require('dotenv').config();
+
 // Create post
 app.post('/api/posts/create', (req, res) => createHandler(req, res));
 // List posts

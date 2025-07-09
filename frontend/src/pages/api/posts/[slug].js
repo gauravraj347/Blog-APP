@@ -1,7 +1,7 @@
 // Proxy dynamic post operations to backend
 import axios from "axios";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "https://blog-app-xwiv.onrender.com";
 
 export default async function handler(req, res) {
   const { method, query, body } = req;
@@ -29,6 +29,7 @@ export default async function handler(req, res) {
       res.status(405).end(`Method ${method} Not Allowed`);
     }
   } catch (err) {
+    console.error('Backend error:', err);
     res.status(500).json({ message: "Backend error" });
   }
 }

@@ -1,7 +1,7 @@
 // Proxy for listing all posts
 import axios from "axios";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "https://blog-app-xwiv.onrender.com";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
@@ -9,6 +9,7 @@ export default async function handler(req, res) {
       const resp = await axios.get(`${API_BASE}/api/posts`);
       res.status(200).json({ posts: resp.data.posts });
     } catch (err) {
+      console.error('Error fetching posts:', err);
       res.status(500).json({ message: "Failed to fetch posts" });
     }
   } else if (req.method === "POST") {
@@ -21,6 +22,7 @@ export default async function handler(req, res) {
       });
       res.status(200).json(resp.data);
     } catch (err) {
+      console.error('Error creating post:', err);
       res.status(500).json({ error: err?.response?.data?.error || err.message || "Failed to create post" });
     }
   } else {
